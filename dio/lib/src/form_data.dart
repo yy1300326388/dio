@@ -68,7 +68,7 @@ class FormData {
   /// contain only ASCII characters.
   String _headerForField(String name, String value) {
     var header =
-        'content-disposition: form-data; name="${_browserEncode(name)}"';
+        'Content-Disposition: form-data; name="${_browserEncode(name)}"';
     if (!isPlainAscii(value)) {
       header = '$header\r\n'
           'content-type: text/plain; charset=utf-8\r\n'
@@ -82,7 +82,7 @@ class FormData {
   String _headerForFile(MapEntry<String, MultipartFile> entry) {
     var file = entry.value;
     var header =
-        'content-disposition: form-data; name="${_browserEncode(entry.key)}"';
+        'Content-Disposition: form-data; name="${_browserEncode(entry.key)}"';
     if (file.filename != null) {
       header = '$header; filename="${_browserEncode(file.filename)}"';
     }
